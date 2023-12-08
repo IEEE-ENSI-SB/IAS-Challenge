@@ -1,0 +1,285 @@
+{% extends 'Dashboards.html' %}
+
+{% block content %}
+<input type="checkbox" id="menu-toggle">
+
+<!--Sidebar-->
+<div class="sidebar" style="user-select: none;">
+    <div class="side-header">
+        <a href="{% url 'Home' %}" style="text-decoration: none;">
+            <h3><b style="border: 2px solid white;border-radius: 10px;padding: 5px;">E</b><span> Transport</span></h3>
+        </a>
+    </div>
+    
+    <div class="side-content">
+        <div class="profile">
+            <img class="profile-img bg-img" src="{{user.image.url}}" alt="">
+            <br>
+            <h4 style="text-align: center;">{{user.username}}</h4>
+            <br>
+            <div class="sidebarDeatils">
+                <small style="display: flex;align-items: center;margin: 2px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path fill="#899dc1" d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+                    <span style="margin: 3px;">{{user.email}}</span>
+                </small>
+                <br>
+                <small style="display: flex;align-items: center;margin: 2px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512"><path fill="#899dc1" d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/></svg>
+                    <span style="margin: 3px;">{{user.phone}}</span>
+                </small>
+                <br>
+                <small style="display: flex;align-items: center;margin: 2px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512"><path fill="#899dc1" d="M96 0C60.7 0 32 28.7 32 64V448c-17.7 0-32 14.3-32 32s14.3 32 32 32H320c17.7 0 32-14.3 32-32s-14.3-32-32-32V304h16c22.1 0 40 17.9 40 40v32c0 39.8 32.2 72 72 72s72-32.2 72-72V252.3c32.5-10.2 56-40.5 56-76.3V144c0-8.8-7.2-16-16-16H544V80c0-8.8-7.2-16-16-16s-16 7.2-16 16v48H480V80c0-8.8-7.2-16-16-16s-16 7.2-16 16v48H432c-8.8 0-16 7.2-16 16v32c0 35.8 23.5 66.1 56 76.3V376c0 13.3-10.7 24-24 24s-24-10.7-24-24V344c0-48.6-39.4-88-88-88H320V64c0-35.3-28.7-64-64-64H96zM216.9 82.7c6 4 8.5 11.5 6.3 18.3l-25 74.9H256c6.7 0 12.7 4.2 15 10.4s.5 13.3-4.6 17.7l-112 96c-5.5 4.7-13.4 5.1-19.3 1.1s-8.5-11.5-6.3-18.3l25-74.9H96c-6.7 0-12.7-4.2-15-10.4s-.5-13.3 4.6-17.7l112-96c5.5-4.7 13.4-5.1 19.3-1.1z"/></svg>
+                    {% if user.role.lower == 'user' %}
+                        <span style="margin: 3px;">{{user.Vehicle_Type}}</span>
+                    {% elif user.role.lower == 'charger' %}
+                        <span style="margin: 3px;">{{user.Charger_Type}}</span>
+                    {% endif %}
+                </small>
+            </div>
+        </div>
+
+        <div class="side-menu">
+            <ul>
+                <li>
+                    <a href="{% url 'Dashboard' %}" class="active">
+                        <span class="las la-clipboard-list"></span>
+                        <small>Dashboard</small>
+                    </a>
+                </li>
+                <li class="HomeFromDashboard">
+                    <a href="{% url 'Home' %}">
+                        <span class="las la-home"></span>
+                        <small>Home</small>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!--main content-->
+<div class="main-content" style="user-select: none;">
+    <header>
+        <div class="header-content">
+            <label for="menu-toggle">
+                <span class="las la-bars"></span>
+            </label>
+    
+            <div class="header-menu">
+                <br>
+                <div class="notify-icon">
+                    <span class="las la-envelope"></span>
+                    <span class="notify">4</span>
+                </div>
+    
+                <div class="notify-icon">
+                    <span class="las la-bell"></span>
+                    <span class="notify">3</span>
+                </div>
+    
+                <div class="user">
+                    <img class="client-img bg-img" src="{{user.image.url}}" alt="">
+                    <a href="{% url 'logout' %}" class="logoutButton">
+                        <span class="las la-power-off"></span>
+                        <span style="margin-left: 0.3rem; display: inline-block; font-size: 0.9rem;">Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!--Title-->
+        <div class="page-header">
+            <span>Dashboard</span>
+            <span>#{{user.id}}</span>
+        </div>
+        {% if scam %}
+            <p style="color: #8E1300;padding: 10px;border: 1px solid #8e130076;background-color: #a9635845;border-radius: 3px;max-width: 500px;width: 95%;margin: 5px auto;">
+                Be cautious if you've been charged more than expected. Rest assured, we'll investigate and ensure you receive a refund !
+            </p>
+        {% endif %}
+        {% if error %}
+        <p style="color: #8E1300;padding: 10px;border: 1px solid #8e130076;background-color: #a9635845;border-radius: 3px;width: max-content;margin: 5px auto;">
+            An error has been made !
+        </p>
+        {% endif %}
+    
+        <!--Leaflet map-->
+        <div id="map" style="width: 100%; height: 400px; margin: 20px auto; z-index: 1;"></div>
+    
+        <!--Page content-->
+        <div class="page-content">
+          <div class="records table-responsive">
+    
+            <!--validate a transaction-->
+            <div class="record-header">
+                {% if user.role.lower == 'user' %}
+                    <form action="" class="add" method="POST">
+                        {% csrf_token %}
+                        <div class="make-transaction" style="margin: 10px 0px;">
+                            <label for="ID Charger">ID Charger :</label>
+                            <input type="number" inputmode="numeric" placeholder="#xxxx" id="IDcharger" name="IDcharger" required>
+                        </div>
+                        <div class="make-transaction" style="margin: 10px 0px;">
+                            <label for="Energy Delivered">Energy Delivered:</label>
+                            <input type="number" inputmode="numeric" placeholder=" xxxx kWh" id="Energy_Delivered" name="Energy_Delivered" required>
+                        </div>
+                        <div class="make-transaction" style="margin: 10px 0px;">
+                            <label for="CHARGING FEES">Charging fees:</label>
+                            <input type="number" inputmode="numeric" placeholder=" xxxx dt" id="chargingFees" name="chargingFees" required>
+                        </div>
+                        <button type="submit">Add</button>
+                    </form>
+                    <div class="browse">
+                        <label for="search">Search old transactions :</label>
+                        <input type="search" name="transactions_made_by_user"
+                        hx-post="/search_User_transactions/"
+                        hx-trigger="keyup"
+                        hx-target="#Transactions"
+                        placeholder="Charger name ?"
+                        hx-swap = "innerHTML"
+                        class="record-search"
+                        >
+                    </div>
+                {% elif user.role.lower == 'charger' %}
+                    <div class="browse">
+                        <label for="search">Search old transactions :</label>
+                        <input type="search" name="transactions_made_by_Charger"
+                        hx-post="/search_Charger_transactions/"
+                        hx-trigger="keyup"
+                        hx-target="#Transactions"
+                        placeholder="Charger name ?"
+                        hx-swap = "innerHTML"
+                        class="record-search"
+                        >
+                    </div>
+                {% endif %}
+            </div>
+            <!--List of transactions-->
+            <div class="table_of_transactions">
+              <table width="100%">
+                    <thead>
+                        <tr>
+                            <th class="hideWhen625px">#</th>
+                            {% if user.role.lower == 'user' %}
+                                <th>Chargers</th>
+                            {% elif user.role.lower == 'charger' %}
+                                <th>Members of community</th>
+                            {% endif %}
+
+                            <th>Energy Delivered (kWh)</th>
+                            <th>DATE</th>
+                            <th class="hideWhen625px">CHARGING FEES</th>
+                            <th class="hideWhen625px">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Transactions">
+                        {% if user.role.lower == 'user' %}
+                            {% for block in BT %}
+                                <tr>
+                                    <td>{{ block.transaction.chargerId }}</td>
+                                    <td>
+                                        <div class="client">
+                                            <img class="client-img bg-img" src="{{ block.transaction.chargerImageUrl }}" alt="">
+                                            <div class="client-info">
+                                                <h4>{{ block.transaction.Charger_username }}</h4>
+                                                <small>{{ block.transaction.Charger_email }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{ block.transaction.Energy_Delivered }}</td>
+                                    <td>{{ block.transaction.Transaction_date }}</td>
+                                    <td>{{ block.transaction.charging_fees }} dt</td>
+                                    <td>
+                                        <span class="paid">Valid</span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% elif user.role.lower == 'charger' %}
+                            {% for block in BT_Charger %}
+                                <tr>
+                                    <td>{{ block.transaction.User_ID }}</td>
+                                    <td>
+                                        <div class="client">
+                                            <img class="client-img bg-img" src="{{ block.transaction.UserImageUrl }}" alt="">
+                                            <div class="client-info">
+                                                <h4>{{ block.transaction.User_username }}</h4>
+                                                <small>{{ block.transaction.User_email }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{ block.transaction.Energy_Delivered }}</td>
+                                    <td>{{ block.transaction.Transaction_date }}</td>
+                                    <td>{{ block.transaction.charging_fees }} dt</td>
+                                    <td>
+                                        <span class="paid">Valid</span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                    </tbody>
+              </table>
+          </div>
+        </div>
+    </main>
+</div>
+
+<script defer src="https://unpkg.com/htmx.org@1.9.2" integrity="sha384-L6OqL9pRWyyFU3+/bjdSri+iIphTN/bvYyM37tICVyOJkWZLpP2vGn6VUEXgzg6h" crossorigin="anonymous"></script>
+<script>
+    document.body.addEventListener('htmx:configRequest', (event) => {
+      event.detail.headers['X-CSRFToken'] = '{{ csrf_token }}';
+    });
+
+    /* map */
+    var map = L.map('map', {
+    center: [36.8065, 10.1815],
+    zoom: 16,
+    dragging: true
+    });
+
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
+
+    var redIcon = L.icon({
+        iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-red.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+    });
+
+    {% for charger in chargers %}
+        var latitude = {{ charger.position.y }};
+        var longitude = {{ charger.position.x }};
+        var marker = L.marker([latitude, longitude]).addTo(map);
+        marker.bindPopup("<b>Charger :</b> {{charger.username}}<br><b>ID :</b> {{charger.id}}<br><b>Charger Type:</b> {{charger.Charger_Type}}").openPopup();
+    {% endfor %}
+    {% if request.user.role.lower == 'user' %}
+        if ("geolocation" in navigator) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+                var lat = position.coords.latitude;
+                var lng = position.coords.longitude;
+                var marker = L.marker([lat, lng], { icon: redIcon }).addTo(map);
+                marker.bindPopup("<b>Hello!</b><br>This is where you are").openPopup();
+                map.setView( [lat, lng] , 16);
+            }, function(error) {
+                var marker = L.marker([36.8065, 10.1815], { icon: redIcon }).addTo(map);
+                marker.bindPopup("<b>Hello!</b><br>This is where you are").openPopup();
+                map.setView( [36.8065, 10.1815] , 16);
+                console.error("Error getting location:", error);
+            });
+        } else {
+            map.setView( [36.8065, 10.1815] , 16);
+            console.error("Geolocation is not supported by this browser.");
+        }
+    {% elif request.user.role.lower == 'charger' %}
+        var marker = L.marker([{{user.position.y}}, {{user.position.x}}], { icon: redIcon }).addTo(map);
+        marker.bindPopup("<b>Hello!</b><br>This is where you are").openPopup();
+        map.setView( [{{user.position.y}}, {{user.position.x}}] , 16);
+
+    {% endif %}
+
+    
+</script>
+
+{% endblock %}

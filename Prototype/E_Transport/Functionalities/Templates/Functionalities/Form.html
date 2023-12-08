@@ -1,0 +1,110 @@
+{% extends 'AccessForm.html' %}
+{% block content %}
+    <a href="{% url 'Home' %}" class="ReturnHome">Home</a>
+    <div class="container">
+        <h1 style="text-align: center;margin-bottom: 30px;">Access Request Form</h1>
+        <form method="POST">
+            {% csrf_token %}
+            <h2 style="border-bottom: 1px solid #fff; margin: 20px 0px;">Contact Information</h2>
+            <div class="fields">
+                <div>
+                    <div class="input-field">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="Enter your name" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Date of Birth</label>
+                        <input type="date" placeholder="Enter birth date" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Email</label>
+                        <input type="text" placeholder="Enter your email" required>
+                    </div>
+                    <div class="input-field">
+                        <label>Phone</label>
+                        <input type="number" placeholder="Enter phone number" required>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-field">
+                        <label>Gender</label>
+                        <select required>
+                            <option disabled selected>Select gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Others</option>
+                        </select>
+                    </div>
+                    <div class="input-field">
+                        <label>Occupation</label>
+                        <input type="text" placeholder="Enter your ccupation" required>
+                    </div>
+                    <div class="input-field">
+                        <label>CIN</label>
+                        <input type="number" placeholder="Enter ID number" required>
+                    </div>
+                </div>
+            </div>
+            <h2 style="border-bottom: 1px solid #fff;margin: 20px 0px;">Charging Point Information</h2>
+            <div class="fields">
+                <div class="input-field">
+                    <label style="width: 100%;">If you already have equipment, please state them</label>
+                    <textarea name="equipments" id="equipments" placeholder="State your equipments"></textarea>
+                </div>
+
+                <label for="map" style="width: 100%;">Add location :</label>
+                <div id="map" style="width: 500px; height: 250px; margin: 20px auto; z-index: 1;"></div>
+
+
+
+            </div>
+            <div class="buttons">
+                <button class="sumbit">
+                    <span class="btnText" style="color: black;">Submit</span>
+                    <i class="uil uil-navigator"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <script>
+        /* map */
+        var map = L.map('map', {
+        center: [36.8065, 10.1815],
+        zoom: 16,
+        dragging: true
+        });
+    
+        L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {}).addTo(map);
+
+        // Create the sidebar control
+        var drawnItems = new L.FeatureGroup();
+        map.addLayer(drawnItems);
+
+        var drawControl = new L.Control.Draw({
+            draw: {
+                polygon: false, // desable polygon tool
+                polyline: false, // desable polyline tool
+                circle: false, // desable circle tool
+                rectangle: false, // desable rectangle tool
+                marker: true, // Enable marker tool
+                // Add more tool options here as needed
+            }
+        });
+        map.addControl(drawControl);
+
+        // Event listener for when a shape is drawn
+        map.on(L.Draw.Event.CREATED, function(event) {
+            if (drawnItems.getLayers().length > 0) {
+                drawnItems.clearLayers(); // Clear the old marker
+            }
+
+            let layer = event.layer;
+            drawnItems.addLayer(layer);
+
+            let latlng = layer.getLatLng();
+
+            layer.bindPopup("Latitude: " + latlng.lat + "<br>Longitude: " + latlng.lng).openPopup();
+        });
+    </script>
+    
+{% endblock %}

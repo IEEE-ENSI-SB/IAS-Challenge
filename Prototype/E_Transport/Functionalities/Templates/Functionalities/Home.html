@@ -1,0 +1,579 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<!-- LOADER -->
+<div id="preloader">
+    <img class="preloader" src="../../../static/images/HomeImages/loader.gif" alt="">
+ </div>
+ <!-- end loader -->
+ <!-- END LOADER -->
+ <header class="header header_style_01">
+    <nav class="megamenu navbar navbar-default" data-spy="affix">
+       <div class="top-header">
+          <div class="container">
+             <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-hidden">
+                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-hidden">
+                    
+                   </div>
+                   <div class="top-area-block top-area-socials socials-colored-hover">
+                      <div class="socials inline-inside"> 
+                         <a class="socials-item" href="#" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a>
+                         <a class="socials-item" href="#" target="_blank" title="linkedin"><i class="fa fa-linkedin" aria-hidden="true"></i></a> 
+                         <a class="socials-item" href="#" target="_blank" title="twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a> 
+                         <a class="socials-item" href="#" target="_blank" title="instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a> 
+                         <a class="socials-item" href="#" target="_blank" title="pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a> 
+                         <a class="socials-item" href="#" target="_blank" title="youtube"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="container">
+          <div class="navbar-header">
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+             <span class="sr-only">Toggle navigation</span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             <span class="icon-bar"></span>
+             </button>
+             <a class="navbar-brand" href="{% url 'Home' %}" style="display: flex; align-items: center;justify-content: space-between;width: max-content;">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20" width="20" viewBox="0 0 512 512"><path fill="#ff9500" d="M25.7 228.2l.4-.5c0 .2 0 .3-.1 .5zm460.6 15.5c0-44-7.8-84.5-28.8-122.4C416.5 47.9 343.9 8 258.9 8 119 7.7 40.6 113.2 26.1 227.7c42.4-61.3 117.1-121.4 220.4-125 0 0 109.7 0 99.4 105H170c6.4-37.4 18.6-59 34.3-78.9-75.1 34.9-121.9 96.1-120.8 188.3 .8 71.5 50.1 144.8 120.8 172 83.4 31.8 192.8 7.2 240.1-21.3V363.3C363.6 419.8 173.6 424.2 172.2 295.7H486.3V243.7z"/></svg><span style="margin: -1px auto -1px 5px;">Transport</span>
+             </a>
+          </div>
+          <div id="navbar" class="navbar-collapse collapse">
+             <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a data-scroll href="#home">Home</a></li>
+                <li><a data-scroll href="#about">About Us</a></li>
+                <li><a data-scroll href="#services">Services</a></li>
+                <li><a data-scroll href="#projects">Our Vision</a></li>
+                <li><a data-scroll href="#contact">Contact Us</a></li>
+                {% if request.user.is_authenticated %}
+                  <li><a data-scroll href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
+                  <li><a data-scroll href="{% url 'login' %}">Login</a></li>
+               {% endif %}
+               <li><a data-scroll href="{% url 'access' %}">Get access</a></li>
+             </ul>
+          </div>
+       </div>
+    </nav>
+ </header>
+ <div id="home" class="parallax first-section" data-stellar-background-ratio="0.4" style="background-image:url('../../../static/images/HomeImages/B.jpg');">
+    <div class="container">
+         <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 col-md-offset-2 text-center">
+                  <div class="big-tagline">
+                        <img class="border-line-img" src="../../../static/images/HomeImages/sep-line-white.png" alt="" />
+                        <h2><span class="yellow">E-Transport </span></h2>
+                        <img style="margin-bottom:50px;" class="border-line-img" src="../../../static/images/HomeImages/sep-line-white.png" alt="" />
+                        <p class="lead">Fueling the future with clean energy. Join E-Transport and be part of the electric revolution</p>
+                        {% if request.user.is_authenticated %}
+                           <a href="{% url 'Dashboard' %}" class="Dashboard">Dashboard</a>
+                        {% endif %}
+                  </div>
+            </div>
+         </div>
+
+       <!-- end row -->
+    </div>
+    <!-- end container -->
+ </div>
+ <!-- end section -->
+ <div id="about" class="section wb">
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+             <div class="message-box">
+                <h2>About Us</h2>
+                <h5>We lead the way in pioneering the future of electric transportation, making it sustainable and accessible for all.</h5>
+             </div>
+             <!-- end messagebox -->
+          </div>
+          <!-- end col -->
+          <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+             <div class="message-box">
+                <p class="lead">At E-Transport, our mission is to close the infrastructure gap in electric vehicle charging. We offer a comprehensive solution that caters to both electric vehicle owners and potential charging point providers. Our commitment to transparency and secure transactions ensures a seamless experience, while our features, including route planning and transaction history, prioritize convenience for our users. </p>
+                <a href="#" class="read-more">Read More</a>
+             </div>
+             <!-- end messagebox -->
+          </div>
+          <!-- end col -->
+       </div>
+       <!-- end row -->
+       <div class="row text-center about-row">
+          <div class="col-md-4 col-sm-12 col-xs-12">
+             <div class="row">
+                <div class="service-widget">
+                   <div class="post-media wow fadeIn">
+                      <a href="../../../static/images/HomeImages/innovation.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                      <img src="../../../static/images/HomeImages/innovation.jpg" alt="" class="img-responsive img-rounded" style="width: 250px">
+                   </div>
+                   <h3>Innovation</h3>
+                   <p>E-Transport is at the forefront of innovation in electric mobility. Our platform continually evolves to incorporate the latest advancements, ensuring that users and providers benefit from cutting-edge solutions.</p>
+                </div>
+                <!-- end service -->
+             </div>
+          </div>
+          <div class="col-md-4 col-sm-12 col-xs-12">
+             <div class="row">
+                <div class="service-widget">
+                   <div class="post-media wow fadeIn">
+                      <a href="../../../static/images/HomeImages/ecof.png" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                      <img src="../../../static/images/HomeImages/ecof.png" alt="" class="img-responsive img-rounded" style="width: 250px">
+                   </div>
+                   <h3>Sustainability Commitment</h3>
+                   <p>Beyond facilitating electric vehicle transactions, E-Transport is committed to sustainability. By choosing our platform, you align yourself with a community dedicated to reducing carbon footprints and fostering eco-friendly transportation practices. </p>
+                </div>
+                <!-- end service -->
+             </div>
+          </div>
+          <div class="col-md-4 col-sm-12 col-xs-12">
+             <div class="row">
+                <div class="service-widget">
+                   <div class="post-media wow fadeIn">
+                      <a href="../../../static/images/HomeImages/update.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                      <img src="../../../static/images/HomeImages/update.jpg" alt="" class="img-responsive img-rounded" style="width: 350px">
+                   </div>
+                   <h3>Continuous Support and Updates</h3>
+                   <p>E-Transport is dedicated to providing ongoing support to its users and partners. Stay informed about the latest features, updates, and industry trends through regular communications, ensuring that you are always connected to the pulse of electric mobility.</p>
+                </div>
+                <!-- end service -->
+             </div>
+          </div>
+       </div>
+       <!-- end row -->
+    </div>
+    <!-- end container -->
+    <div class="sep1"></div>
+ </div>
+ <!-- end section -->
+ <div id="services" class="parallax section db parallax-off no-padding-bottom"  >
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+             <div class="message-box">
+                <h2>Services</h2>
+                <h5> We take pride in offering a range of services designed to enhance your electric mobility experience</h5>
+             </div>
+             <!-- end messagebox -->
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+             <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  style="height: 400px;">
+                   <div class="service-inform">
+                      <div class="icon-service" style="height: 220px;">
+                         <img src="../../../static/images/HomeImages/icon0.png" alt="#" style="margin: auto; width: 220px; object-fit: contain;"/>
+                      </div>
+                      <div class="service-inform-text">
+                         <h3>Transaction Monitoring Dashboard</h3>
+                         <p>Access a user-friendly dashboard for seamless transaction management and monitoring.</p>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  style="height: 400px;">
+                   <div class="service-inform">
+                      <div class="icon-service" style="height: 220px;">
+                         <img src="../../../static/images/HomeImages/customer.png" alt="#" style="margin: auto; width: 200px; object-fit: contain;"/>
+                      </div>
+                      <div class="service-inform-text">
+                         <h3>Customer Support</h3>
+                         <p>Reach our dedicated customer support team for any assistance.Prompt response to inquiries, feedback, and support requests.</p>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  style="height: 400px;">
+                   <div class="service-inform">
+                      <div class="icon-service" style="height: 220px;">
+                         <img src="../../../static/images/HomeImages/part.png" alt="#" style="margin: auto; width: 200px; object-fit: contain;"/>
+                      </div>
+                      <div class="service-inform-text">
+                         <h3>Give Access to Become a Charging Point</h3>
+                         <p>Contribute to electric vehicle infrastructure by offering your location as a charging point.</p>
+                      </div>
+                   </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  style="height: 400px;">
+                   <div class="service-inform">
+                      <div class="icon-service" style="height: 220px;">
+                         <img src="../../../static/images/HomeImages/loc.png" alt="#" style="margin: auto; width: 120px; object-fit: contain;"/>
+                      </div>
+                      <div class="service-inform-text">
+                         <h3>Visualize the Nearest Charging Point</h3>
+                         <p>Effortlessly locate the closest charging point for a seamless electric vehicle experience.</p>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+       <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 serv" style="background-color:#222;height: 420px;overflow: auto;">
+             <div class="serv-blog" style="height: 100px;">
+                <img src="../../../static/images/HomeImages/rea.png" alt="#" style="width: 130px;object-fit: contain;display: block;margin: auto;"/>
+             </div>
+             <div class="serv-blog-cont">
+                <h3>Reliability</h3>
+                <p>Our platform is designed for reliability. From secure transactions to accurate route planning, E-Transport ensures a trustworthy experience for both users and providers.</p>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 serv" style="background:#181818;height: 420px;overflow: auto;">
+             <div class="serv-blog" style="height: 100px;">
+                <img src="../../../static/images/HomeImages/a.png" alt="#" style="object-fit: contain;display: block;margin: auto;"/>
+             </div>
+             <div class="serv-blog-cont">
+                <h3>Empowerment</h3>
+                <p>We believe in empowering individuals and businesses to actively contribute to the electric vehicle infrastructure. Through E-Transport, you have the opportunity to become a vital part of the evolving landscape of sustainable transportation.</p>
+             </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 serv" style="background-color:#222;height: 420px;overflow: auto;">
+             <div class="serv-blog" style="height: 100px;">
+                <img src="../../../static/images/HomeImages/f.png" alt="#" style="object-fit: contain;display: block;margin: auto;"/>
+             </div>
+             <div class="serv-blog-cont">
+                <h3>Flexibility and Scalability</h3>
+                <p>Whether you are an individual EV owner or a business looking to expand charging infrastructure, E-Transport offers flexible solutions that can adapt to your needs. Our platform is scalable, allowing for growth and increased participation over time.</p>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- end section -->
+ <div id="projects" class="section">
+    <div class="container">
+       <div class="row">
+          <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+             <div class="message-box">
+                <h2>Our Vision</h2>
+                <h3>Connecting the Future of Transportation</h3>
+                <h5>E-Transport is not just a platform; it's a vision for a sustainable and interconnected future. We understand the challenges faced by EV owners and the evolving landscape of electric transportation. Our platform addresses these challenges by offering a seamless experience centered around transparency, security, and convenience.</h5>
+             </div>
+             <!-- end messagebox -->
+          </div>
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+             <div class="row">
+                <div class="container gal-container">
+                   <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                      <div class="box">
+                         <a href="#" data-toggle="modal" data-target="#1">
+                         <img src="../../../static/images/HomeImages/pro0.jpg" alt="#" />
+                         </a>
+                         <div class="modal fade" id="1" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                  <div class="modal-body">
+                                     <img src="../../../static/images/HomeImages/pro0.jpg" alt="#" />
+                                  </div>
+                                  <div class="col-md-12 description">
+                                     <h4>This is the first one on my Gallery</h4>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                      <div class="box">
+                         <a href="#" data-toggle="modal" data-target="#2">
+                         <img src="../../../static/images/HomeImages/pro.jpg" alt="#" />
+                         </a>
+                         <div class="modal fade" id="2" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                  <div class="modal-body">
+                                     <img src="../../../static/images/HomeImages/pro.jpg" alt="#" />
+                                  </div>
+                                  <div class="col-md-12 description">
+                                     <h4>This is the second one on my Gallery</h4>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                      <div class="box">
+                         <a href="#" data-toggle="modal" data-target="#3">
+                         <img src="../../../static/images/HomeImages/pro4.jpg" alt="#" />
+                         </a>
+                         <div class="modal fade" id="3" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                  <div class="modal-body">
+                                     <img src="../../../static/images/HomeImages/pro4.jpg" alt="#" />
+                                  </div>
+                                  <div class="col-md-12 description">
+                                     <h4>This is the third one on my Gallery</h4>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                      <div class="box">
+                         <a href="#" data-toggle="modal" data-target="#4">
+                         <img src="../../../static/images/HomeImages/pro5.jpg" alt="#" />
+                         </a>
+                         <div class="modal fade" id="4" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                  <div class="modal-body">
+                                     <img src="../../../static/images/HomeImages/pro5.jpg" alt="#" />
+                                  </div>
+                                  <div class="col-md-12 description">
+                                     <h4>This is the fourth one on my Gallery</h4>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                      <div class="box">
+                         <a href="#" data-toggle="modal" data-target="#5">
+                         <img src="../../../static/images/HomeImages/pro3.jpg" alt="#" />
+                         </a>
+                         <div class="modal fade" id="5" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                  <div class="modal-body">
+                                     <img src="../../../static/images/HomeImages/pro3.jpg" alt="#" />
+                                  </div>
+                                  <div class="col-md-12 description">
+                                     <h4>This is the fifth one on my Gallery</h4>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                      <div class="box">
+                         <a href="#" data-toggle="modal" data-target="#9">
+                         <img src="../../../static/images/HomeImages/pro7.jpg" alt="#" />
+                         </a>
+                         <div class="modal fade" id="9" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                  <div class="modal-body">
+                                     <img src="../../../static/images/HomeImages/pro7.jpg" alt="#" />
+                                  </div>
+                                  <div class="col-md-12 description">
+                                     <h4>This is the ninth one on my Gallery</h4>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                   <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                      <div class="box">
+                         <a href="#" data-toggle="modal" data-target="#10">
+                         <img src="../../../static/images/HomeImages/pro2.jpg" alt="#" />
+                         </a>
+                         <div class="modal fade" id="10" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                               <div class="modal-content">
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                  <div class="modal-body">
+                                     <img src="../../../static/images/HomeImages/pro2.jpg" alt="#" />
+                                  </div>
+                                  <div class="col-md-12 description">
+                                     <h4>This is the tenth one on my Gallery</h4>
+                                  </div>
+                               </div>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ <!-- end section -->
+ <div id="contact" class="section wb">
+    <div class="container">
+       <div class="section-title row text-center">
+          <div class="col-md-8 col-md-offset-2">
+             <h3>Contact Us</h3>
+             <p class="lead">Whether you have questions, feedback, or you're interested in collaboration, we're here to assist you. Contact us through the following channels</p>
+          </div>
+          <!-- end col -->
+       </div>
+       <!-- end title -->
+       <div class="row">
+          <div class="col-lg-4 col-md-4">
+             <div class="contant-info">
+                <ul class="item-display-block">
+                   <li>
+                      <div class="info-shape accent-color background fs-23">
+                         <div class="icon"><i class="fa fa-home"></i></div>
+                      </div>
+                      <div class="info-content">
+                         <h6 class="uppercase"> Address:</h6>
+                         <p> Campus Universitaire de la Manouba - 2010 Tunisie</p>
+                      </div>
+                   </li>
+                   <li>
+                      <div class="info-shape accent-color background fs-23">
+                         <div class="icon"><i class="fa fa-volume-control-phone"></i></div>
+                      </div>
+                      <div class="info-content">
+                         <h6 class="uppercase"> Phone:</h6>
+                         <p> +216 56 33 53 33</p>
+                      </div>
+                   </li>
+                   <li>
+                      <div class="info-shape accent-color background fs-23">
+                         <div class="icon"><i class="fa fa-envelope-o"></i></div>
+                      </div>
+                      <div class="info-content">
+                         <h6 class="uppercase"> Email Address:</h6>
+                         <p>ieee.sb@ensi-uma.tn</p>
+                      </div>
+                   </li>
+                </ul>
+             </div>
+          </div>
+          <div class="col-md-8">
+             <div class="contact_form">
+                <div id="message"></div>
+                <form id="contactform" class="row" action="contact.php" name="contactform" method="post">
+                   <fieldset class="row-fluid">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                         <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                         <input type="text" name="last_name" id="last_name" class="form-control" placeholder="Last Name">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                         <input type="email" name="email" id="email" class="form-control" placeholder="Your Email">
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                         <input type="text" name="phone" id="phone" class="form-control" placeholder="Your Website">
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                         <label class="sr-only">Select Department</label>
+                         <select name="select_service" id="select_service" class="selectpicker form-control" data-style="btn-white">
+                            <option value="12">Select Service</option>
+                            <option value="Building Service">Building Service</option>
+                            <option value="Tover Design">Tover Design</option>
+                            <option value="Others">Others</option>
+                         </select>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                         <textarea class="form-control" name="comments" id="comments" rows="6" placeholder="Give us more details.."></textarea>
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                         <button type="submit" value="SEND" id="submit" class="btn btn-light btn-radius btn-brd grd1 btn-block">Submit</button>
+                      </div>
+                   </fieldset>
+                </form>
+             </div>
+          </div>
+          <!-- end col -->
+       </div>
+       <!-- end row -->
+    </div>
+    <!-- end container -->
+ </div>
+ <!-- end section -->
+ <!-- footer -->
+ <footer id="footer" style="width: 100%;height: 100%;background-image: url('../../../static/images/HomeImages/B.jpg');background-repeat: no-repeat;background-size: cover;">
+    <div id="footer-widgets" class="container style-1">
+       <div class="row">
+          <div class="col-md-4">
+             <div class="widget widget_text">
+                <h2 class="widget-title"><span>ABOUT US</span></h2>
+                <div class="textwidget">
+                   <p>As industry leaders, we bridge the gap in infrastructure for electric vehicle charging, offering solutions that empower both EV owners and charging point providers.  Join us in shaping a sustainable and connected future.</p>
+                </div>
+             </div>
+          </div>
+          <div class="col-md-4">
+             <div class="widget widget_links">
+                <h2 class="widget-title"><span>COMPANY LINKS</span></h2>
+                <ul class="wprt-links clearfix col2">
+                   <li><a data-scroll="" href="#home">Home</a></li>
+                   <li><a data-scroll="" href="#about">About Us</a></li>
+                   <li><a data-scroll="" href="#services">Services</a></li>
+                   <li><a data-scroll="" href="#projects">Our Vision</a></li>
+                   <li><a data-scroll="" href="#contact">Contact Us</a></li>
+                </ul>
+             </div>
+          </div>
+          <div class="col-md-4">
+             <div class="widget widget_information">
+                <h2 class="widget-title"><span>CONTACT INFO</span></h2>
+                <ul>
+                   <li class="address clearfix">
+                      <span class="hl">Address:</span>
+                      <span class="text">Campus Universitaire de la Manouba - 2010 Tunisie</span>
+                   </li>
+                   <li class="phone clearfix">
+                      <span class="hl">Phone:</span> 
+                      <span class="text">+216 56 33 53 33</span>
+                   </li>
+                   <li class="email clearfix">
+                      <span class="hl">E-mail:</span>
+                      <span class="text">ieee.sb@ensi-uma.tn</span>
+                   </li>
+                </ul>
+             </div>
+             <div class="widget widget_socials">
+                <div class="socials">
+                   <a target="_blank" href="#"><i class="fa fa-twitter"></i></a>
+                   <a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+                   <a target="_blank" href="#"><i class="fa fa-google-plus"></i></a>
+                   <a target="_blank" href="#"><i class="fa fa-pinterest"></i></a>
+                   <a target="_blank" href="#"><i class="fa fa-dribbble"></i></a>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+    <div id="bottom" class="clearfix style-1">
+       <div class="container">
+          <div id="bottom-bar-inner" class="wprt-container">
+             <div class="bottom-bar-inner-wrap">
+                <!-- /.bottom-bar-content -->
+                <div class="bottom-bar-menu pull-right">
+                   <ul class="bottom-nav">
+                      <li><a href="#/">HISTORY</a></li>
+                      <li><a href="#/">FAQ</a></li>
+                      <li><a href="#/">EVENTS</a></li>
+                   </ul>
+                </div>
+                <!-- /.bottom-bar-menu -->
+             </div>
+          </div>
+       </div>
+    </div>
+ </footer>
+ <!-- end footer -->
+ <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+ <!-- ALL JS FILES -->
+ <script src="../../../static/js/HomeJS/all.js"></script>
+ <!-- ALL PLUGINS -->
+ <script src="../../../static/js/HomeJS/custom.js"></script>
+ <script src="../../../static/js/HomeJS/portfolio.js"></script>
+ <script src="../../../static/js/HomeJS/hoverdir.js"></script>
+
+
+
+
+
+
+{% endblock %}

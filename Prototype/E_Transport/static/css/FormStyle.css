@@ -1,0 +1,129 @@
+/* ===== Google Font Import - Poppins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:url('../images/B.jpg') no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.container{
+    position: relative;
+    max-width: 800px;
+    width: 95%;
+    border-radius: 12px;
+    padding: 30px 40px;
+    margin: 50px auto;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(9px);
+    color: #fff;
+}
+
+.fields{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.fields label{
+    min-width: 100px;
+}
+.input-field{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Update input field styles */
+.input-field input[type="text"],
+.input-field input[type="number"],
+.input-field input[type="date"] {
+    max-width: 200px;
+    width: 100%;
+    background-color: #000; /* Change background color to white */
+    color: #fff; /* Change text color to dark */
+    border: 1px solid #535353; /* Update border color */
+    padding: 10px; /* Adjust padding for better appearance */
+    border-radius: 25px;
+    margin: 5px 10px;
+}
+
+/* Update select styles */
+.input-field select {
+    max-width: 200px;
+    width: 100%;
+    background-color: #000; /* Change background color to white */
+    color: #fff; /* Change text color to dark */
+    border: 1px solid #393939; /* Update border color */
+    padding: 10px; /* Adjust padding for better appearance */
+    border-radius: 25px;
+    margin: 5px 10px;
+}
+#equipments{
+    max-width: 300px;
+    width: 100%;
+    background-color: #000; /* Change background color to white */
+    color: #fff; /* Change text color to dark */
+    border: 1px solid #535353; /* Update border color */
+    padding: 10px; /* Adjust padding for better appearance */
+    border-radius: 25px;
+    margin: 5px auto;
+}
+.container form button, .backBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 200px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #333;
+    border-radius: 40px;
+    margin: 25px 0;
+    background-color: #fff;
+    transition: all 0.3s linear;
+    cursor: pointer;
+}
+.container form .btnText{
+    font-size: 14px;
+    font-weight: 400;
+}
+form button:hover{
+    background-color: rgb(203, 150, 3);
+}
+form button i{
+    margin: 0 6px;
+    
+}
+form .buttons{
+    display: flex;
+    align-items: center;
+}
+form .buttons button{
+    margin-right: 14px;
+}
+
+@media only screen and (max-width: 768px) {
+    .input-field {
+        display: block;
+    }
+    .input-field label{
+        display: block;
+    }
+}
+@media only screen and (max-width: 500px) {
+    .container{
+      border-radius: 0px;
+      margin: 100px 0px 0px 0px;
+    }
+  }

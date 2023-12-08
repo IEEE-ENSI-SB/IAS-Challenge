@@ -1,0 +1,93 @@
+{% extends 'Auth.html' %}
+
+{% block title %}
+    {% if page == 'LOGIN' %}
+            <title>Login</title>
+    {% else %}
+            <title>Register</title>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <a href="{% url 'Home' %}" class="ReturnHome">Home</a>
+    {% if page == 'LOGIN' %}
+        <div class="wrapper">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h2>Login as member of community</h2>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" name="Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" name="password" required>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember Me</label>
+                    <a href="#">Forgot Password</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="register-link">
+                    <p>Dont have an account? <a href="{% url 'register' %}">Register</a></p>
+                </div>
+            </form>
+        </div>
+    {% else %}
+        <div class="wrapper">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <h2>Register as member of community</h2>
+                <div class="input-box" style="display: flex; justify-content: center; align-items: center;">
+                    <label for="file-upload" class="custom-file-upload">
+                        <i class="fa fa-cloud-upload"></i> <span>Upload a photo</span>
+                    </label>
+                    <input id="file-upload" type="file" name="image" style="display: none;">
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Email" name="Email" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Username" name="username" required>
+                </div>
+                <div class="input-box">
+                    <input type="number" placeholder="Phone number" name="phone" required>
+                </div>
+                <div class="input-box">
+                    <input type="text" placeholder="Vehicle name & model" name="Vehicle_Type" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Password" id="password1" name="password1" required>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Confirm password" id="password2" name="password2" required>
+                </div>
+                <span style="color: Red;padding: 5px 10px; border: 1px solid red; border-radius: 25px;display: none;width: max-content;margin: auto;" id="alertPassword">Passwords don't match</span>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember Me</label>
+                    <a href="#">Forgot Password</a>
+                </div>
+                <button type="submit" class="btn" id="submitBtn">Register</button>
+                <div class="register-link">
+                    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+                </div>
+            </form>
+        </div>
+
+        <script>
+        const password2 = document.getElementById('password2');
+        const submitBtn = document.getElementById('submitBtn');
+        password2.addEventListener('input', () => {
+            const password1 = document.getElementById('password1').value;
+            if(password2.value != password1){
+                document.getElementById('alertPassword').style.display = 'block';
+                submitBtn.disabled = true;
+            } else {
+                document.getElementById('alertPassword').style.display = 'none';
+                submitBtn.disabled = false;
+            }
+        });
+            
+                
+
+        </script>
+    {% endif %}
+{% endblock %}
